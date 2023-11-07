@@ -29,10 +29,14 @@ addOnBlur = true;
   selectedFileName = '';
   videoId = '';
   FileSelected = false;
+  videoUrl!: string;
 
 constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
                     private _snackBar: MatSnackBar) {
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
+    this.videoService.getVideo(this.videoId).subscribe(data => {
+          this.videoUrl = data.videoUrl;
+        })
     this.saveVideoDetailsForm = new FormGroup({
       title: this.title,
       description: this.description,
