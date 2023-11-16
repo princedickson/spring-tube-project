@@ -1,17 +1,16 @@
-<mat-toolbar>
-  <span>Youtube Clone</span>
-</mat-toolbar>
-
-  <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Youtube clone</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button aria-label="Example icon-button with heart icon" class="example-icon favorite-icon" mat-icon-button>
       <mat-icon>video_call</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button *ngIf="isAuthenticated; else noAuth" mat-icon-button class="example-icon"
+            aria-label="Example icon-button with share icon">
       <mat-icon>account_circle</mat-icon>
     </button>
-  </mat-toolbar>
+    <ng-template #noAuth>
+      <button mat-raised-button (click)="login()">Login</button>
+    </ng-template>
+  </mat-toolbar-row>
+</mat-toolbar>
